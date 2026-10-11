@@ -554,3 +554,29 @@ html:not([data-fondo="floral"]) .bg-papel{background-image:none}
 /* imágenes superpuestas opcionales (IA): ocupan el marco, sin salirse */
 .over{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .pet .bg,.arch,.hf-bg{overflow:hidden}
+
+/* ================= BOCADILLO DE WHATSAPP ================= */
+.wa-chat{position:fixed;right:18px;bottom:18px;z-index:150;display:flex;flex-direction:column;align-items:flex-end;gap:12px;pointer-events:none}
+.wa-chat .fab{position:static;pointer-events:auto}
+.wa-bubble{pointer-events:auto;position:relative;width:min(300px,calc(100vw - 36px));background:var(--crema-2);border:1px solid rgba(107,46,18,.35);border-radius:20px 20px 6px 20px;box-shadow:0 22px 40px -18px rgba(44,18,7,.55);animation:waIn .5s cubic-bezier(.2,1.2,.3,1)}
+.wa-bubble[hidden]{display:none}
+.wa-bubble::after{content:"";position:absolute;right:20px;bottom:-9px;width:16px;height:16px;background:var(--crema-2);border-right:1px solid rgba(107,46,18,.35);border-bottom:1px solid rgba(107,46,18,.35);transform:rotate(45deg);border-radius:0 0 4px 0}
+.wa-msg{display:flex;gap:12px;align-items:flex-start;padding:14px 38px 14px 14px;text-decoration:none;color:var(--choco-2)}
+.wa-msg img{width:40px;height:40px;border-radius:50%;flex:none;box-shadow:0 0 0 1.5px var(--choco)}
+.wa-body{display:block;min-width:0;line-height:1.35}
+.wa-body b{display:block;font-family:var(--f-head);color:var(--choco);font-size:.95rem}
+.wa-txt{display:block;font-size:.92rem;margin-top:2px}
+.wa-body small{display:block;margin-top:6px;font-size:.72rem;color:var(--taupe-2)}
+.wa-x{position:absolute;right:6px;top:4px;width:30px;height:30px;border:0;background:transparent;color:var(--taupe-2);font-size:1.4rem;line-height:1;cursor:pointer;border-radius:50%}
+.wa-x:hover{background:var(--papel-2);color:var(--choco)}
+.wa-typing{display:none;gap:4px;padding:8px 0 6px}
+.wa-bubble.typing .wa-typing{display:flex}
+.wa-bubble.typing .wa-txt,.wa-bubble.typing .wa-body small{display:none}
+.wa-typing i{width:8px;height:8px;border-radius:50%;background:var(--taupe-2);animation:waDot 1s infinite}
+.wa-typing i:nth-child(2){animation-delay:.15s}.wa-typing i:nth-child(3){animation-delay:.3s}
+@keyframes waDot{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-5px);opacity:1}}
+@keyframes waIn{from{opacity:0;transform:translateY(14px) scale(.92)}to{opacity:1;transform:none}}
+.wa-fab-ping{animation:waPing 2.4s ease-out 3}
+@keyframes waPing{0%{box-shadow:0 0 0 0 rgba(47,107,58,.55),0 14px 30px -10px rgba(0,0,0,.5)}100%{box-shadow:0 0 0 22px rgba(47,107,58,0),0 14px 30px -10px rgba(0,0,0,.5)}}
+@media(max-width:600px){.wa-chat{right:14px;bottom:14px}}
+@media(prefers-reduced-motion:reduce){.wa-bubble{animation:none}.wa-typing i{animation:none}}

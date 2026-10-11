@@ -164,6 +164,45 @@ if(fsw){
   $$('button',fsw).forEach(function(b){b.addEventListener('click',function(){setF(b.getAttribute('data-f'))})});
   setF(document.documentElement.getAttribute('data-fondo')||'limpio');
 }
+
+/* ---- bocadillo de WhatsApp que invita a escribir ---- */
+(function(){
+  var box=$('.wa-bubble');if(!box)return;
+  var closed=false;try{closed=sessionStorage.getItem('pl-wa-x')==='1'}catch(e){}
+  if(closed)return;
+  var p=location.pathname.split('/').pop()||'index.html';
+  var M={
+    def:[["¡Hola! 🐾 ¿Le toca baño a tu peludo? Escríbenos y te buscamos hueco.","Hola Peluts, quería pedir cita para mi peludo 🐾"],
+         ["¿Dudas con el pelo, el pienso o los precios? Pregúntanos por aquí 💬","Hola Peluts, tengo una duda 💬"],
+         ["Pide tu cita en un minuto, sin llamadas ni esperas 🐶🐱","Hola Peluts, quiero pedir cita 🐶🐱"]],
+    'perros.html':[["¿Primera vez con tu cachorro? Te explicamos cómo lo hacemos 🐶","Hola Peluts, es la primera vez que llevo a mi cachorro y tengo dudas 🐶"],
+         ["¿Qué corte le va mejor a tu perro? Cuéntanos y te asesoramos ✂️","Hola Peluts, ¿qué corte le iría bien a mi perro? ✂️"],
+         ["Pide cita para tu perro en un minuto 💬","Hola Peluts, quiero pedir cita para mi perro 🐶"]],
+    'gatos.html':[["¿Tu gato es sphynx o de pelo largo? Cuéntanos y te asesoramos 🐱","Hola Peluts, tengo un gato y quería preguntar por su higiene 🐱"],
+         ["¿Se pone nervioso? Tranquilo: vamos a su ritmo. Pregúntanos 💬","Hola Peluts, mi gato se pone nervioso, ¿cómo lo hacéis? 🐱"],
+         ["Pide cita para tu gato en un minuto 💬","Hola Peluts, quiero pedir cita para mi gato 🐱"]],
+    'tienda.html':[["¿Buscas algo concreto? Te decimos si lo tenemos y en qué tienda 🛍️","Hola Peluts, ¿tenéis este producto? 🛍️"],
+         ["¿Qué pienso le va mejor? Cuéntanos edad y tamaño y te aconsejamos 🦴","Hola Peluts, ¿qué pienso me recomendáis? 🦴"]],
+    'tiendas.html':[["¿Dudas con el horario o cómo llegar? Escríbenos y te lo decimos 📍","Hola Peluts, quería preguntar por el horario de la tienda 📍"]],
+    'cita.html':[["¿Te ayudamos a elegir servicio o tienda? Escríbenos 💬","Hola Peluts, necesito ayuda para elegir servicio 💬"]]
+  };
+  var list=M[p]||M.def,idx=0,rounds=0,timers=[];
+  var link=$('.wa-msg',box),txt=$('.wa-txt',box),fab=$('#wa-fab');
+  function later(f,t){var id=setTimeout(f,t);timers.push(id);return id}
+  function show(){
+    var m=list[idx%list.length];idx++;rounds++;
+    box.hidden=false;box.classList.add('typing');txt.textContent=m[0];
+    link.href='https://wa.me/34660632371?text='+encodeURIComponent(m[1]);
+    if(fab)fab.classList.add('wa-fab-ping');
+    later(function(){box.classList.remove('typing')},1400);
+    later(function(){box.hidden=true;if(fab)fab.classList.remove('wa-fab-ping');if(rounds<list.length+1&&rounds<4)later(show,9000)},1400+7000);
+  }
+  function kill(){timers.forEach(clearTimeout);box.hidden=true;try{sessionStorage.setItem('pl-wa-x','1')}catch(e){}}
+  $('.wa-x',box).addEventListener('click',kill);
+  link.addEventListener('click',function(){timers.forEach(clearTimeout)});
+  later(show,reduce?1500:4500);
+})();
+
 var y=$('#year');if(y)y.textContent=new Date().getFullYear();
 })();
 

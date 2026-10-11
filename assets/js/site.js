@@ -150,9 +150,8 @@ if(hfimg&&!reduce&&matchMedia('(hover:hover) and (pointer:fine)').matches){
 
 /* ---- contadores ---- */
 function countUp(el){
-  var end=parseInt(el.getAttribute('data-n'),10),t0=null;
-  function step(t){if(!t0)t0=t;var k=Math.min((t-t0)/900,1);el.textContent=Math.round(end*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(step)}
-  requestAnimationFrame(step);
+  var end=parseInt(el.getAttribute('data-n'),10),t0=Date.now();
+  var iv=setInterval(function(){var k=Math.min((Date.now()-t0)/900,1);el.textContent=Math.round(end*(1-Math.pow(1-k,3)));if(k>=1){clearInterval(iv);el.textContent=end}},40);
 }
 var counters=$$('[data-n]:not(.ball)');
 function chk(){counters=counters.filter(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*0.95){countUp(el);return false}return true})}

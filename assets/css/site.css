@@ -513,3 +513,44 @@ html:not([data-fondo="floral"]) .bg-papel{background-image:none}
 .fondo-sw.in-ann span{opacity:.8}
 .fondo-sw.in-ann button{padding:.4em .85em;font-size:.76rem}
 @media(max-width:600px){.fondo-sw.in-ann{padding:0 4px 0 6px}.fondo-sw.in-ann span{display:none}.fondo-sw.in-ann button{padding:.4em .7em;font-size:.72rem}}
+
+/* ================= ADORNOS ILUSTRADOS (siempre en su propio espacio, nunca encima de texto ni fotos) ================= */
+.deco{display:block;width:100%;height:auto;filter:drop-shadow(0 16px 14px rgba(74,30,10,.13));animation:bob 8s ease-in-out infinite;transition:transform .5s cubic-bezier(.2,.8,.2,1);will-change:transform}
+.deco:hover{transform:scale(1.04) rotate(-1.2deg)}
+.deco.d2{animation-delay:-2.6s}.deco.d3{animation-delay:-5.2s}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-9px) rotate(.7deg)}}
+@media(prefers-reduced-motion:reduce){.deco{animation:none!important}}
+
+/* franja decorativa: ilustración | texto | ilustración */
+.inter{padding-block:clamp(36px,6vw,84px)}
+.inter-in{display:grid;grid-template-columns:1fr minmax(0,460px) 1fr;align-items:center;gap:clamp(14px,3vw,48px);max-width:1180px;margin-inline:auto;width:calc(100% - 48px)}
+.inter-in .a{justify-self:end;width:min(100%,340px)}
+.inter-in .b{justify-self:start;width:min(100%,340px)}
+.inter-in .t{text-align:center}
+.inter-in .t .script{font-family:var(--f-script);font-size:clamp(2.2rem,4.4vw,3.4rem);line-height:1;color:var(--caramelo);display:block}
+.inter-in .t p{margin-top:.6em;color:var(--choco)}
+.inter-in .t .sep{width:min(380px,100%);margin:18px auto 0}
+@media(max-width:760px){
+  .inter-in{grid-template-columns:1fr 1fr;grid-template-areas:"a b" "t t";gap:18px 14px;width:calc(100% - 36px)}
+  .inter-in .a{grid-area:a;justify-self:center;width:min(100%,200px)}
+  .inter-in .b{grid-area:b;justify-self:center;width:min(100%,200px)}
+  .inter-in .t{grid-area:t}
+}
+/* separador de sección */
+.sep{display:block;width:min(560px,86%);height:auto;margin:0 auto}
+.sep.top{margin-bottom:clamp(18px,3vw,34px)}
+.sep-wrap{padding-top:clamp(40px,6vw,70px)}
+/* fila de objetos (naturaleza muerta) */
+.shelf{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,3vw,40px);align-items:end;max-width:1100px;margin-inline:auto}
+.shelf figure{text-align:center}
+.shelf figcaption{font-family:var(--f-script);font-size:1.7rem;color:var(--caramelo);margin-top:6px;line-height:1.1}
+@media(max-width:720px){.shelf{grid-template-columns:1fr 1fr;row-gap:26px}}
+/* grupo de objetos en una columna de texto */
+.toolkit{display:flex;gap:clamp(10px,2vw,24px);align-items:flex-end;margin-top:30px}
+.toolkit img{width:auto;max-height:200px;flex:1 1 0;min-width:0;object-fit:contain}
+@media(max-width:560px){.toolkit img{max-height:150px}}
+.aside-deco{width:min(260px,70%);margin-top:30px}
+@media(max-width:900px){.aside-deco{margin-inline:auto}}
+/* imágenes superpuestas opcionales (IA): ocupan el marco, sin salirse */
+.over{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pet .bg,.arch,.hf-bg{overflow:hidden}

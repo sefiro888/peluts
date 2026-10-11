@@ -496,8 +496,8 @@ html{scroll-padding-top:130px}
 
 /* ================= MODOS DE FONDO (demo: limpio / floral) ================= */
 html[data-fondo="floral"]{--img-crema:url(../img/flor-crema.webp);--img-papel:url(../img/flor-papel.webp);--img-choco:url(../img/flor-choco.webp);--img-noche:url(../img/flor-noche.webp)}
-html[data-fondo="floral"].has-patron{--img-crema:url(../img/patron-floral.webp);--img-papel:url(../img/patron-floral.webp);--tile:900px}
-html[data-fondo="floral"].has-patron.has-osc{--img-choco:url(../img/patron-floral-oscuro.webp);--img-noche:url(../img/patron-floral-oscuro.webp)}
+html[data-fondo="floral"].has-patron{--img-crema:url(../img/patron-floral.webp);--img-papel:url(../img/patron-floral-papel.webp);--tile:820px}
+html[data-fondo="floral"].has-patron.has-osc{--img-choco:url(../img/patron-floral-oscuro.webp);--img-noche:url(../img/patron-floral-noche.webp)}
 /* en modo limpio, las secciones "papel" se diferencian solo por el tono */
 html:not([data-fondo="floral"]) .bg-papel{background-image:none}
 .fondo-sw{position:fixed;left:14px;bottom:14px;z-index:160;display:flex;align-items:center;gap:4px;background:rgba(44,18,7,.92);color:#F6E3C4;border-radius:999px;padding:5px 6px 5px 14px;font-size:.78rem;font-weight:700;letter-spacing:.06em;box-shadow:0 14px 30px -10px rgba(0,0,0,.5);backdrop-filter:blur(6px)}

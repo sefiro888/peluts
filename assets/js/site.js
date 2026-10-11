@@ -27,6 +27,7 @@ function status(key){
   return {st:'closed',txt:'Cerrado'};
 }
 function paintStatus(){
+  $$('[data-live]').forEach(function(el){var r=status(el.getAttribute('data-live'));el.textContent=r.txt});
   $$('[data-status]').forEach(function(el){
     var r=status(el.getAttribute('data-status'));
     el.classList.remove('open','closed');if(r.st!=='unk')el.classList.add(r.st);
@@ -124,6 +125,39 @@ if(form){
   ['servicio','animal','tienda'].forEach(function(k){if(q.get(k)){var r=form.querySelector('input[name='+k+'][value="'+q.get(k)+'"]');if(r)r.checked=true}});
   build();
 }
+
+/* ---- banner: pausa ---- */
+var ann=$('.ann'),pb=$('.ann-pause');
+if(pb){pb.addEventListener('click',function(){
+  var p=ann.classList.toggle('paused');pb.setAttribute('aria-pressed',p);pb.setAttribute('aria-label',p?'Reanudar avisos':'Pausar avisos');
+  pb.innerHTML='<svg class="ico" aria-hidden="true"><use href="#i-'+(p?'play':'pause')+'"/></svg>';
+})}
+
+/* ---- submenú (táctil / teclado) ---- */
+$$('.has-sub').forEach(function(h){
+  var b=$('.sub-toggle',h);if(!b)return;
+  b.addEventListener('click',function(e){e.stopPropagation();var o=h.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+  document.addEventListener('click',function(e){if(!h.contains(e.target)){h.classList.remove('open');b.setAttribute('aria-expanded',false)}});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){h.classList.remove('open');b.setAttribute('aria-expanded',false)}});
+});
+
+/* ---- parallax suave en cabeceras (solo escritorio) ---- */
+var hfimg=$('.hf-bg');
+if(hfimg&&!reduce&&matchMedia('(hover:hover) and (pointer:fine)').matches){
+  var tk=false;
+  addEventListener('scroll',function(){if(tk)return;tk=true;requestAnimationFrame(function(){tk=false;var y=Math.min(scrollY,900);hfimg.style.transform='translate3d(0,'+(y*0.18)+'px,0)'})},{passive:true});
+}
+
+/* ---- contadores ---- */
+function countUp(el){
+  var end=parseInt(el.getAttribute('data-n'),10),t0=null;
+  function step(t){if(!t0)t0=t;var k=Math.min((t-t0)/900,1);el.textContent=Math.round(end*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+}
+var counters=$$('[data-n]:not(.ball)');
+function chk(){counters=counters.filter(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*0.95){countUp(el);return false}return true})}
+if(counters.length){addEventListener('scroll',chk,{passive:true});setInterval(function(){if(counters.length)chk()},500);chk()}
+
 var y=$('#year');if(y)y.textContent=new Date().getFullYear();
 })();
 

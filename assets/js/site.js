@@ -158,6 +158,13 @@ var counters=$$('[data-n]:not(.ball)');
 function chk(){counters=counters.filter(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*0.95){countUp(el);return false}return true})}
 if(counters.length){addEventListener('scroll',chk,{passive:true});setInterval(function(){if(counters.length)chk()},500);chk()}
 
+/* ---- interruptor de fondo (demo) ---- */
+var fsw=$('.fondo-sw');
+if(fsw){
+  function setF(f){document.documentElement.setAttribute('data-fondo',f);$$('button',fsw).forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-f')===f)});try{localStorage.setItem('pl-fondo',f)}catch(e){}}
+  $$('button',fsw).forEach(function(b){b.addEventListener('click',function(){setF(b.getAttribute('data-f'))})});
+  setF(document.documentElement.getAttribute('data-fondo')||'limpio');
+}
 var y=$('#year');if(y)y.textContent=new Date().getFullYear();
 })();
 

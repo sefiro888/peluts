@@ -1,7 +1,7 @@
 /* PELUTS · perruqueria canina i complements animals
    Paleta y ornamento sacados del logotipo: crema, chocolate, taupe, loto + hojas dentadas + espirales */
-:root{
-  --crema:#FAEFDF;--crema-2:#FFF8EC;--papel:#F4E5CB;--papel-2:#EBD6B4;
+:root{--img-crema:none;--img-papel:none;--img-choco:none;--img-noche:none;--tile:1300px;
+  --crema:#E6DACC;--crema-2:#F8F1E6;--papel:#DDCFBC;--papel-2:#D3C2AB;
   --choco:#6B2E12;--choco-2:#4A1E0A;--noche:#2C1207;
   --taupe:#B3AB9B;--taupe-2:#8C8372;--oro:#B58A5B;--caramelo:#C0762F;
   --r:26px;--line:1.5px solid var(--choco);
@@ -12,7 +12,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:var(--f-body);color:var(--choco-2);background:var(--crema) url(../img/flor-crema.webp) 0 0/1300px;line-height:1.65;font-size:17px;overflow-x:hidden}
+body{font-family:var(--f-body);color:var(--choco-2);background:var(--crema) var(--img-crema) 0 0/var(--tile);line-height:1.65;font-size:17px;overflow-x:hidden}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 .wrap{width:min(1200px,100% - 48px);margin-inline:auto}
@@ -44,7 +44,7 @@ p+p{margin-top:1em}
 .btn.ghost.light{background:transparent;color:var(--crema);border-color:var(--crema)}.btn.ghost.light:hover{background:var(--crema);color:var(--choco)}
 
 /* ---------- intro ---------- */
-.intro{position:fixed;inset:0;z-index:500;background:var(--crema) url(../img/flor-crema.webp) 0 0/1300px;display:grid;place-items:center;transition:transform 1s cubic-bezier(.7,0,.2,1),opacity .4s .7s;cursor:pointer}
+.intro{position:fixed;inset:0;z-index:500;background:var(--crema) var(--img-crema) 0 0/var(--tile);display:grid;place-items:center;transition:transform 1s cubic-bezier(.7,0,.2,1),opacity .4s .7s;cursor:pointer}
 .intro.out{transform:translateY(-101%);opacity:0;pointer-events:none}
 .intro-core{text-align:center;padding:20px}
 .intro-seal{position:relative;width:min(62vw,300px);aspect-ratio:1;margin:0 auto;animation:pop 1.1s cubic-bezier(.2,1.3,.4,1) both}
@@ -56,7 +56,7 @@ p+p{margin-top:1em}
 html:not(.js) .intro{display:none}
 
 /* ---------- cabecera ---------- */
-.site-header{position:sticky;top:0;z-index:200;background:rgba(250,239,223,.9);backdrop-filter:blur(14px);border-bottom:1px solid rgba(107,46,18,.25)}
+.site-header{position:sticky;top:0;z-index:200;background:rgba(230,218,204,.9);backdrop-filter:blur(14px);border-bottom:1px solid rgba(107,46,18,.25)}
 .header-in{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-block:10px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
 .brand img{width:56px;height:56px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1.5px var(--choco)}
@@ -84,8 +84,8 @@ section{padding-block:clamp(72px,10vw,132px);position:relative}
 .sec-head{max-width:760px;margin-bottom:clamp(36px,5vw,64px)}
 .sec-head h2{margin:.4em 0 .45em}
 .sec-head.center{margin-inline:auto}
-.bg-papel{background:var(--papel) url(../img/flor-papel.webp) 0 0/1300px}
-.bg-choco{background:var(--choco-2) url(../img/flor-choco.webp) 0 0/1300px;color:var(--crema-2)}
+.bg-papel{background:var(--papel) var(--img-papel) 0 0/var(--tile)}
+.bg-choco{background:var(--choco-2) var(--img-choco) 0 0/var(--tile);color:var(--crema-2)}
 .bg-choco h2,.bg-choco h3{color:var(--crema)}
 .bg-choco .kicker{color:#F0C48A}
 .bg-choco em.s{color:#F0C48A}
@@ -103,7 +103,7 @@ section{padding-block:clamp(72px,10vw,132px);position:relative}
 .ph{background:var(--papel-2);overflow:hidden;border-radius:var(--r);position:relative}
 .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
 .ph:hover img{transform:scale(1.06)}
-.ph figcaption{position:absolute;left:14px;bottom:12px;background:rgba(250,239,223,.92);padding:.35em .9em;border-radius:999px;font-size:.8rem;font-weight:700;color:var(--choco)}
+.ph figcaption{position:absolute;left:14px;bottom:12px;background:rgba(230,218,204,.92);padding:.35em .9em;border-radius:999px;font-size:.8rem;font-weight:700;color:var(--choco)}
 
 /* ---------- HERO ---------- */
 .hero{padding-block:clamp(40px,6vw,84px) clamp(80px,10vw,130px);overflow:hidden}
@@ -159,7 +159,7 @@ section{padding-block:clamp(72px,10vw,132px);position:relative}
 .svc .pic{aspect-ratio:4/3.1;overflow:hidden;background:var(--papel-2);position:relative}
 .svc .pic img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s}
 .svc:hover .pic img{transform:scale(1.07)}
-.svc .pic.ornate{background:var(--choco-2) url(../img/flor-choco.webp) center/620px;display:grid;place-items:center;color:#F0C48A}
+.svc .pic.ornate{background:var(--choco-2) var(--img-choco) center/620px;display:grid;place-items:center;color:#F0C48A}
 .svc .pic.ornate .ico{width:96px;height:96px;stroke-width:1.2}
 .svc .body{padding:26px 26px 28px;display:flex;flex-direction:column;flex:1}
 .svc h3{margin-bottom:.4em}
@@ -219,7 +219,7 @@ section{padding-block:clamp(72px,10vw,132px);position:relative}
 .tag-card:hover{transform:translateY(-6px);box-shadow:var(--sombra)}
 .tag-card .pic{aspect-ratio:16/10;background:var(--papel-2);position:relative;overflow:hidden}
 .tag-card .pic img{width:100%;height:100%;object-fit:cover}
-.tag-card .pic.ornate{background:var(--choco-2) url(../img/flor-choco.webp) center/620px;display:grid;place-items:center}
+.tag-card .pic.ornate{background:var(--choco-2) var(--img-choco) center/620px;display:grid;place-items:center}
 .tag-card .pic.ornate img{width:96px;height:96px;border-radius:50%;box-shadow:0 0 0 3px var(--crema)}
 .tag-card .in{padding:24px 26px 26px;display:flex;flex-direction:column;flex:1}
 .tag-card h3{font-size:1.8rem}
@@ -314,7 +314,7 @@ details p{padding-top:10px;max-width:62ch}
 .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
 /* ---------- footer ---------- */
-footer{background:var(--noche) url(../img/flor-noche.webp) 0 0/1300px;color:#EBD6B4;padding-block:70px 28px;position:relative}
+footer{background:var(--noche) var(--img-noche) 0 0/var(--tile);color:#EBD6B4;padding-block:70px 28px;position:relative}
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px}
 footer h4{color:var(--crema);font-size:1.1rem;margin-bottom:14px;font-family:var(--f-head);font-weight:500}
 footer a{text-decoration:none;opacity:.92}footer a:hover{text-decoration:underline;color:#F0C48A}
@@ -364,7 +364,7 @@ footer ul{list-style:none;display:grid;gap:8px;font-size:.95rem}
 .hf .kicker{color:#F0C48A}
 .hf .lead{color:#FBEBD2;text-shadow:0 1px 14px rgba(0,0,0,.4)}
 .hf .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin:30px 0 26px}
-.hf .chip{background:rgba(250,239,223,.94);color:var(--choco-2)}
+.hf .chip{background:rgba(230,218,204,.94);color:var(--choco-2)}
 .hf .hero-meta{display:flex;flex-wrap:wrap;gap:10px}
 .hf .seal-wrap{position:absolute;right:max(24px,calc((100% - 1200px)/2));bottom:46px;width:min(190px,22vw);aspect-ratio:1}
 .hf .seal{width:100%;height:100%;border-radius:50%;object-fit:cover;box-shadow:0 18px 40px -16px rgba(0,0,0,.7),0 0 0 4px var(--crema),0 0 0 5.5px var(--choco);animation:float 7s ease-in-out infinite}
@@ -399,7 +399,7 @@ footer ul{list-style:none;display:grid;gap:8px;font-size:.95rem}
 @keyframes kb2{from{transform:scale(1.02)}to{transform:scale(1.08)}}
 .js .hf .rv{opacity:1;transform:none;transition:none;animation:fadeup 1s .2s both}
 .js .hf .rv.d1{animation-delay:.35s}.js .hf .rv.d2{animation-delay:.5s}.js .hf .rv.d3{animation-delay:.65s}
-@media(max-width:940px){.site-header{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(250,239,223,.98)}}
+@media(max-width:940px){.site-header{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(230,218,204,.98)}}
 html{scroll-padding-top:84px}
 @media(max-width:600px){.fab{width:54px;height:54px;right:14px;bottom:14px}.fab .ico{width:27px;height:27px}.hf .hero-meta{padding-right:70px}}
 @media(max-width:940px){.nav a:not(.btn){border-radius:0}.nav a:not(.btn)::after{left:.4em;right:auto;width:36px;bottom:.45em}}
@@ -493,3 +493,17 @@ html{scroll-padding-top:130px}
 @media(max-width:600px){.checkgrid{grid-template-columns:1fr}}
 .hf-bg .over{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 @media(max-width:820px){.trust-it{flex-direction:column;align-items:flex-start;gap:2px;padding:4px 12px}.trust-it b{font-size:2rem}.trust-it span{font-size:.86rem}}
+
+/* ================= MODOS DE FONDO (demo: limpio / floral) ================= */
+html[data-fondo="floral"]{--img-crema:url(../img/flor-crema.webp);--img-papel:url(../img/flor-papel.webp);--img-choco:url(../img/flor-choco.webp);--img-noche:url(../img/flor-noche.webp)}
+html[data-fondo="floral"].has-patron{--img-crema:url(../img/patron-floral.webp);--img-papel:url(../img/patron-floral.webp);--tile:900px}
+html[data-fondo="floral"].has-patron.has-osc{--img-choco:url(../img/patron-floral-oscuro.webp);--img-noche:url(../img/patron-floral-oscuro.webp)}
+/* en modo limpio, las secciones "papel" se diferencian solo por el tono */
+html:not([data-fondo="floral"]) .bg-papel{background-image:none}
+.fondo-sw{position:fixed;left:14px;bottom:14px;z-index:160;display:flex;align-items:center;gap:4px;background:rgba(44,18,7,.92);color:#F6E3C4;border-radius:999px;padding:5px 6px 5px 14px;font-size:.78rem;font-weight:700;letter-spacing:.06em;box-shadow:0 14px 30px -10px rgba(0,0,0,.5);backdrop-filter:blur(6px)}
+.fondo-sw span{margin-right:4px;text-transform:uppercase;letter-spacing:.14em;font-size:.68rem;opacity:.85}
+.fondo-sw button{border:0;background:transparent;color:inherit;font:inherit;padding:.55em 1em;border-radius:999px;cursor:pointer;transition:background .25s,color .25s}
+.fondo-sw button[aria-pressed=true]{background:#F0C48A;color:var(--choco-2)}
+.fondo-sw button:not([aria-pressed=true]):hover{background:rgba(240,196,138,.2)}
+@media(max-width:600px){.fondo-sw{left:10px;bottom:10px;padding-left:10px}.fondo-sw span{display:none}}
+.ilus{position:absolute;right:10px;bottom:10px;z-index:3;background:rgba(44,18,7,.7);color:#F6E3C4;font-size:.68rem;letter-spacing:.08em;padding:.3em .8em;border-radius:999px;pointer-events:none}

@@ -4,3 +4,4 @@ _ia_entrada/
 .claude/
 /*.png
 PROMPTS_IMAGENES_CHATGPT.md
+/assets/*.png

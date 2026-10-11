@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Yellowtail&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
-<script>document.documentElement.classList.add('js')</script>
+<script>(function(d){d.classList.add('js');var f='limpio';try{var q=new URLSearchParams(location.search).get('fondo');f=q||localStorage.getItem('pl-fondo')||'limpio';if(q)localStorage.setItem('pl-fondo',q)}catch(e){}d.setAttribute('data-fondo',f==='floral'?'floral':'limpio');var a=new Image();a.onload=function(){d.classList.add('has-patron');var b=new Image();b.onload=function(){d.classList.add('has-osc')};b.src='assets/img/patron-floral-oscuro.webp'};a.src='assets/img/patron-floral.webp'})(document.documentElement)</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"PetStore","name":"Peluts","description":"Perruqueria canina i felina, alimentació i complements per a animals","url":"https://www.instagram.com/pelutsbotiga/","sameAs":["https://www.instagram.com/pelutsbotiga/","https://www.facebook.com/pelutsbotiga","https://www.tiktok.com/@animals.peluts"],"email":"peluts.botiga@gmail.com","address":[{"@type":"PostalAddress","streetAddress":"Carrer de Sants, 164","postalCode":"08028","addressLocality":"Barcelona","addressCountry":"ES"},{"@type":"PostalAddress","streetAddress":"Alts Forns, 69, local 16","addressLocality":"Barcelona","addressCountry":"ES"}]}</script>
 </head>
 <body>
@@ -120,6 +120,7 @@
 <div class="legal"><span>© <span id="year">2026</span> Peluts · Barcelona</span><span>Demostración de diseño web · no es la web oficial · textos y datos tomados de sus perfiles públicos</span></div>
 </div></footer>
 <a class="fab" href="https://wa.me/34660632371?text=%C2%A1Hola%20Peluts!" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg class="ico " aria-hidden="true"><use href="#i-wa"/></svg></a>
+<div class="fondo-sw" role="group" aria-label="Elegir fondo (demostración)"><span>Fondo</span><button type="button" data-f="limpio" aria-pressed="true">Limpio</button><button type="button" data-f="floral" aria-pressed="false">Floral</button></div>
 <script src="assets/js/site.js" defer></script>
 </body>
 </html>
